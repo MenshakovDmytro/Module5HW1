@@ -12,7 +12,7 @@ public class HttpService : IHttpService
         _httpClient = new HttpClient();
     }
 
-    public async Task SendAsync<TReturnType>(string url, HttpMethod method, StringContent? httpContent = null)
+    public async Task SendAsync<TResponse>(string url, HttpMethod method, StringContent? httpContent = null)
     {
         var httpMessage = new HttpRequestMessage();
         if (httpContent is not null)
@@ -24,6 +24,6 @@ public class HttpService : IHttpService
         httpMessage.Method = method;
         var result = await _httpClient.SendAsync(httpMessage);
         var content = await result.Content.ReadAsStringAsync();
-        var response = JsonConvert.DeserializeObject<TReturnType>(content);
+        var response = JsonConvert.DeserializeObject<TResponse>(content);
     }
 }
