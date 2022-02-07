@@ -19,7 +19,7 @@ public class AuthService : IAuthService
 
     public async Task RegisterSuccessful()
     {
-        var url = $"{_url}/api/register";
+        var url = @$"{_url}/api/register";
         var auth = new AuthRequest() { Email = "eve.holt@reqres.in", Password = "pistol" };
         var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
         await _httpService.SendAsync<RegisterSuccessfulResponse>(url, HttpMethod.Post, httpContent);
@@ -27,7 +27,7 @@ public class AuthService : IAuthService
 
     public async Task RegisterUnsuccessful()
     {
-        var url = $"{_url}/api/register";
+        var url = @$"{_url}/api/register";
         var auth = new AuthRequest() { Email = "sydney@fife" };
         var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
         await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, httpContent);
@@ -35,7 +35,7 @@ public class AuthService : IAuthService
 
     public async Task LoginSuccessful()
     {
-        var url = $"{_url}/api/login";
+        var url = @$"{_url}/api/login";
         var auth = new AuthRequest() { Email = "eve.holt@reqres.in", Password = "cityslicka" };
         var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
         await _httpService.SendAsync<LoginSuccessfulResponse>(url, HttpMethod.Post, httpContent);
@@ -43,7 +43,7 @@ public class AuthService : IAuthService
 
     public async Task LoginUnsuccessful()
     {
-        var url = $"{_url}/api/login";
+        var url = @$"{_url}/api/login";
         var auth = new AuthRequest() { Email = "peter@klaven" };
         var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
         await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, httpContent);
