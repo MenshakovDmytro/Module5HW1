@@ -17,4 +17,11 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="appconfig.json" />
+      <Content Include="appconfig.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
