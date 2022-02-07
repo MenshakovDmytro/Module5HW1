@@ -1,9 +1,12 @@
-﻿namespace Module5HW1
+﻿using Module5HW1.Helper;
+
+namespace Module5HW1;
+
+public class Program
 {
-    public class Program
+    public static async Task Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-        }
+        var starter = new Starter();
+        await starter.Run();
     }
 }
