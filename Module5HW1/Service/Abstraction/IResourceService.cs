@@ -1,8 +1,11 @@
-﻿namespace Module5HW1.Service.Abstraction;
+﻿using Module5HW1.Models;
+using Module5HW1.Models.Responses;
+
+namespace Module5HW1.Service.Abstraction;
 
 public interface IResourceService
 {
-    public Task GetListResource();
-    public Task GetSingleResource();
-    public Task GetSingleResourceNotFound();
+    public Task<RootResponse<ResourceDto>> GetListResource();
+    public Task<SingleResponse<ResourceDto>> GetSingleResource();
+    public Task<SingleResourceNotFoundResponse> GetSingleResourceNotFound();
 }

@@ -15,21 +15,21 @@ public class ResourceService : IResourceService
         _httpService = httpService;
     }
 
-    public async Task GetListResource()
+    public async Task<RootResponse<ResourceDto>> GetListResource()
     {
         var url = @$"{_url}/api/unknown";
-        await _httpService.SendAsync<RootResponse<ResourceDto>>(url, HttpMethod.Get);
+        return await _httpService.SendAsync<RootResponse<ResourceDto>>(url, HttpMethod.Get, "application/json");
     }
 
-    public async Task GetSingleResource()
+    public async Task<SingleResponse<ResourceDto>> GetSingleResource()
     {
         var url = @$"{_url}/api/unknown/2";
-        await _httpService.SendAsync<SingleResponse<ResourceDto>>(url, HttpMethod.Get);
+        return await _httpService.SendAsync<SingleResponse<ResourceDto>>(url, HttpMethod.Get, "application/json");
     }
 
-    public async Task GetSingleResourceNotFound()
+    public async Task<SingleResourceNotFoundResponse> GetSingleResourceNotFound()
     {
         var url = @$"{_url}/api/unknown/23";
-        await _httpService.SendAsync<SingleResourceNotFoundResponse>(url, HttpMethod.Get);
+        return await _httpService.SendAsync<SingleResourceNotFoundResponse>(url, HttpMethod.Get, "application/json");
     }
 }

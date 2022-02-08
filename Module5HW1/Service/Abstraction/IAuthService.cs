@@ -1,9 +1,11 @@
-﻿namespace Module5HW1.Service.Abstraction;
+﻿using Module5HW1.Models.Responses;
+
+namespace Module5HW1.Service.Abstraction;
 
 public interface IAuthService
 {
-    public Task RegisterSuccessful();
-    public Task RegisterUnsuccessful();
-    public Task LoginSuccessful();
-    public Task LoginUnsuccessful();
+    public Task<RegisterSuccessfulResponse> RegisterSuccessful();
+    public Task<AuthUnsuccessfulResponse> RegisterUnsuccessful();
+    public Task<LoginSuccessfulResponse> LoginSuccessful();
+    public Task<AuthUnsuccessfulResponse> LoginUnsuccessful();
 }

@@ -2,5 +2,5 @@
 
 public interface IHttpService
 {
-    public Task SendAsync<TReturnType>(string requestUri, HttpMethod method, StringContent? httpContent = null);
+    public Task<T> SendAsync<T>(string requestUri, HttpMethod method, string mediaType, object? body = null);
 }

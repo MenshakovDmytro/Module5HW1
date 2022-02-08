@@ -17,35 +17,31 @@ public class AuthService : IAuthService
         _httpService = httpService;
     }
 
-    public async Task RegisterSuccessful()
+    public async Task<RegisterSuccessfulResponse> RegisterSuccessful()
     {
         var url = @$"{_url}/api/register";
         var auth = new AuthRequest() { Email = "eve.holt@reqres.in", Password = "pistol" };
-        var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
-        await _httpService.SendAsync<RegisterSuccessfulResponse>(url, HttpMethod.Post, httpContent);
+        return await _httpService.SendAsync<RegisterSuccessfulResponse>(url, HttpMethod.Post, "application/json", auth);
     }
 
-    public async Task RegisterUnsuccessful()
+    public async Task<AuthUnsuccessfulResponse> RegisterUnsuccessful()
     {
         var url = @$"{_url}/api/register";
         var auth = new AuthRequest() { Email = "sydney@fife" };
-        var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
-        await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, httpContent);
+        return await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, "application/json", auth);
     }
 
-    public async Task LoginSuccessful()
+    public async Task<LoginSuccessfulResponse> LoginSuccessful()
     {
         var url = @$"{_url}/api/login";
         var auth = new AuthRequest() { Email = "eve.holt@reqres.in", Password = "cityslicka" };
-        var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
-        await _httpService.SendAsync<LoginSuccessfulResponse>(url, HttpMethod.Post, httpContent);
+        return await _httpService.SendAsync<LoginSuccessfulResponse>(url, HttpMethod.Post, "application/json", auth);
     }
 
-    public async Task LoginUnsuccessful()
+    public async Task<AuthUnsuccessfulResponse> LoginUnsuccessful()
     {
         var url = @$"{_url}/api/login";
         var auth = new AuthRequest() { Email = "peter@klaven" };
-        var httpContent = new StringContent(JsonConvert.SerializeObject(auth), Encoding.UTF8, "application/json");
-        await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, httpContent);
+        return await _httpService.SendAsync<AuthUnsuccessfulResponse>(url, HttpMethod.Post, "application/json", auth);
     }
 }
